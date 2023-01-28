@@ -1,0 +1,12 @@
+services:
+  typesense:
+    container_name: typesense-server
+    image: typesense/typesense:0.23.1
+    entrypoint: sh -c "/opt/typesense-server --data-dir /data --api-key=xyz --enable-cors"
+    ports:
+      - "8108:8108"
+    volumes:
+      - typesense-data:/data
+volumes:
+  typesense-data:
+    driver: local
