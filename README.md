@@ -44,23 +44,25 @@ curl http://localhost:8108/health
 
 # Run a local Typesense server with Docker Compose
 
-`docker-compose.yml` should contain the following:
+eg. `docker-compose.yml`:
 ```
+version: "3"
+
 services:
-  typesense:
-    container_name: typesense-server
-    image: typesense/typesense:0.23.1
-    entrypoint: sh -c "/opt/typesense-server --data-dir /data --api-key=<SET YOUR API KEY HERE> --enable-cors"
-    ports:
-      - "8108:8108"
-    volumes:
-      - typesense-data:/data
-volumes:
-  typesense-data:
-    driver: local
+    typesense:
+        container_name: typesense-server
+        image: typesense/typesense:0.24.0
+        environment: # configure typesense server using environment variables
+            TYPESENSE_DATA_DIR: /data
+            TYPESENSE_ENABLE_CORS: true
+            TYPESENSE_API_KEY: xyz
+        ports:
+            - 8108:8108
+        volumes:
+            - /typesense-data:/data # /typesense-data is used to store search engine data
 ```
 
-To start the service:
+To start the service (in detached mode):
 ```
 docker compose up -d
 ```
