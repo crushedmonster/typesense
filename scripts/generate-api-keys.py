@@ -23,7 +23,7 @@ admin_key = client.keys.create({
 
 # Search-only key
 search_key = client.keys.create({
-  "description": "Search-only companies key.",
+  "description": "Search-only key.",
   "actions": ["documents:search"],
   "collections": ["*"]
 })
