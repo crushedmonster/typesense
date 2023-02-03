@@ -8,7 +8,7 @@ client = typesense.Client({
     'port': '8108',      # For Typesense Cloud use 443
     'protocol': 'http'   # For Typesense Cloud use https
   }],
-  'api_key': '<API_KEY>', # Use the same API key that was used to start the Typesense server 
+  'api_key': '<API_KEY>',
   'connection_timeout_seconds': 2
 })
 
